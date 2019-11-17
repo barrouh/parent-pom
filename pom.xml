@@ -55,6 +55,7 @@
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
+		<sonar-maven-plugin.version>3.6.0.1398</sonar-maven-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 		<maven-scm-provider-gitexe.version>1.11.2</maven-scm-provider-gitexe.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -95,6 +96,12 @@
 						</execution>
 					</executions>
 				</plugin>
+				<!-- run sonar:sonar Psonar -Dsonar.login=$SONAR_TOKEN to analyse project code source in sonarcloud -->
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${sonar-maven-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -111,6 +118,17 @@
 	</build>
 
 	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+				<sonar.organization>barrouh-github</sonar.organization>
+				<sonar.projectKey>${project.artifactId}</sonar.projectKey>
+			</properties>
+		</profile>
 		<profile>
 			<id>release</id>
 			<build>
