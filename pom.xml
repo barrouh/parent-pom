@@ -122,9 +122,6 @@
 	<profiles>
 		<profile>
 			<id>sonar</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<build>
 				<plugins>
 					<!-- Psonar -Dsonar.login=$SONAR_TOKEN to analyse project code source in sonarcloud -->
