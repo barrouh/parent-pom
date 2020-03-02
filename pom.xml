@@ -104,12 +104,6 @@
 						</execution>
 					</executions>
 				</plugin>
-				<!-- run profile -Psonar -DsonarToken=xxxxxxxxxxxxx to analyse project code source in sonarcloud -->
-				<plugin>
-					<groupId>org.sonarsource.scanner.maven</groupId>
-					<artifactId>sonar-maven-plugin</artifactId>
-					<version>${sonar-maven-plugin.version}</version>
-				</plugin>
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -137,6 +131,7 @@
 					<plugin>
 						<groupId>org.sonarsource.scanner.maven</groupId>
 						<artifactId>sonar-maven-plugin</artifactId>
+						<version>${sonar-maven-plugin.version}</version>
 						<executions>
 							<execution>
 								<phase>install</phase>
