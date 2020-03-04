@@ -16,3 +16,5 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -Psonar clean deploy -e --file pom.xml --settings /home/runner/work/parent-pom/maven-settings/settings.xml
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
